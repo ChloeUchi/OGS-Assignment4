@@ -5,8 +5,15 @@ import { RootState } from '@stores/Stores';
 // import { TbMoustache } from "react-icons/tb";
 import { nextQuestion, prevQuestion, reAttempt, setStartAttempt, setSelectedAnswer, submit } from '@stores/slices/QuizSlice';
 import QuestionsData from '../types/QuestionsData';
-
+type InlineStyle = {
+    [key: string]: string;
+};
 function QuizPage() {
+
+    const getRadioStyle = (color: string): InlineStyle => ({
+        '--radio-button-color': color.startsWith('#') ? color : `#${color}`,
+    });
+
     const { startAttempt, currentQuestion, answer, score, isSubmit } =
         useSelector((state: RootState) => state.quiz.value);
     const dispatch = useDispatch();
@@ -70,10 +77,10 @@ function QuizPage() {
                                                         {QuestionsData[currentQuestion].question}
                                                     </div>
                                                     <Radio.Group className="radio-con flex flex-col z-50 options mt-5 ml-7 gap-5 " onChange={handleChange} value={answer[currentQuestion] || ""}>
-                                                        <Radio value="A" className='text-lg z-50'>A. {QuestionsData[currentQuestion].A}</Radio>
-                                                        <Radio value="B" className='text-lg z-50'>B. {QuestionsData[currentQuestion].B}</Radio>
-                                                        <Radio value="C" className='text-lg z-50'>C. {QuestionsData[currentQuestion].C}</Radio>
-                                                        <Radio value="D" className='text-lg z-50'>D. {QuestionsData[currentQuestion].D}</Radio>
+                                                        <Radio value="A" className='text-lg z-50' style={getRadioStyle('#335070')}>A. {QuestionsData[currentQuestion].A}</Radio>
+                                                        <Radio value="B" className='text-lg z-50' style={getRadioStyle('#335070')}>B. {QuestionsData[currentQuestion].B}</Radio>
+                                                        <Radio value="C" className='text-lg z-50' style={getRadioStyle('#335070')}>C. {QuestionsData[currentQuestion].C}</Radio>
+                                                        <Radio value="D" className='text-lg z-50' style={getRadioStyle('#335070')}>D. {QuestionsData[currentQuestion].D}</Radio>
                                                     </Radio.Group>
                                                 </div>
                                             )}
@@ -81,26 +88,26 @@ function QuizPage() {
                                         </div>
                                     </div>
                                     <div className='flex justify-around  mx-[4.5em] gap-96'>
-                                            {currentQuestion > 0 && (
-                                                <div className='click-btn'>
-                                                    <button className='button-click z-50' onClick={onPrev} disabled={currentQuestion === 0} >
-                                                        Previous
-                                                    </button>
-                                                </div>
-                                            )}
-                                            {currentQuestion < QuestionsData.length - 1 && (
-                                                <div className='click-btn'>
-                                                    <button className='button-click z-50' onClick={onNext} disabled={currentQuestion == QuestionsData.length - 1} >
-                                                        Next
-                                                    </button>
-                                                </div>
-                                            )}
-                                            {currentQuestion >= QuestionsData.length - 1 && (
-                                                <div className='click-btn'>
-                                                    <button className='button-click z-50' onClick={onSubmit}>Submit</button>
-                                                </div>
-                                            )}
-                                        </div>
+                                        {currentQuestion > 0 && (
+                                            <div className='click-btn'>
+                                                <button className='button-click z-50' onClick={onPrev} disabled={currentQuestion === 0} >
+                                                    Previous
+                                                </button>
+                                            </div>
+                                        )}
+                                        {currentQuestion < QuestionsData.length - 1 && (
+                                            <div className='click-btn'>
+                                                <button className='button-click z-50' onClick={onNext} disabled={currentQuestion == QuestionsData.length - 1} >
+                                                    Next
+                                                </button>
+                                            </div>
+                                        )}
+                                        {currentQuestion >= QuestionsData.length - 1 && (
+                                            <div className='click-btn'>
+                                                <button className='button-click z-50' onClick={onSubmit}>Submit</button>
+                                            </div>
+                                        )}
+                                    </div>
                                 </>
                             ) : (
                                 <div className=''>

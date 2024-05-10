@@ -8,6 +8,9 @@ export default {
     darkMode: "class",
     theme: {
         extend: {
+            colors: {
+                'radio-button-color': 'var(--radio-button-color)',
+            },
             fontFamily: {
                 fontfont: ['varela-round-regular', ]
             }
