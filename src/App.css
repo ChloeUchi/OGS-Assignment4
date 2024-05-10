@@ -1,0 +1,549 @@
+body {
+    background: #51a8ff;
+    /* font-family: MyFont; */
+}
+
+.dark {
+    background: #173f67;
+}
+
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    background: white;
+    animation: ripple 15s infinite;
+    box-shadow: 0px 0px 1px 0px #508fb9;
+    /* z-index: -99; */
+}
+
+.small {
+    width: 200px;
+    height: 200px;
+    left: -100px;
+    bottom: -100px;
+}
+
+.medium {
+    width: 400px;
+    height: 400px;
+    left: -200px;
+    bottom: -200px;
+}
+
+.large {
+    width: 600px;
+    height: 600px;
+    left: -300px;
+    bottom: -300px;
+}
+
+.xlarge {
+    width: 800px;
+    height: 800px;
+    left: -400px;
+    bottom: -400px;
+}
+
+.xxlarge {
+    width: 1000px;
+    height: 1000px;
+    left: -500px;
+    bottom: -500px;
+}
+
+.shade1 {
+    opacity: 0.2;
+}
+
+.shade2 {
+    opacity: 0.5;
+}
+
+.shade3 {
+    opacity: 0.7;
+}
+
+.shade4 {
+    opacity: 0.8;
+}
+
+.shade5 {
+    opacity: 0.9;
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0.8);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(0.8);
+    }
+}
+
+
+/* navigation css */
+
+.active {
+    @apply text-[#173f67] underline underline-offset-8;
+}
+
+.dark .active {
+    @apply text-[#acd5ff];
+}
+
+
+/* evaluate xss */
+
+.header-div {
+    @apply pb-7 pt-3
+}
+
+.containerDiv h1 {
+    @apply font-bold text-[#173f67]
+}
+
+.toggle>div {
+    position: relative;
+    padding: 10px;
+    width: 150px;
+    height: 75px;
+    border-radius: 50px;
+    box-shadow: 0 -1px 1px 0 rgba(0, 0, 0, .5), 0px 1px 1px 0 rgba(255, 255, 255, 1);
+    background: rgb(189, 191, 193);
+    background: linear-gradient(to bottom, rgba(189, 191, 193, 1) 0%, rgba(249, 251, 254, 1) 100%);
+}
+
+.toggle>div>input[type=checkbox] {
+    position: absolute;
+    opacity: 0;
+    top: -3px;
+    left: 17px;
+    width: 130px;
+    height: 55px;
+    z-index: 5;
+}
+
+.toggle>div>input[type=checkbox]~div {
+    width: 130px;
+    height: 55px;
+    border-radius: 50px;
+    border: 1px solid #979797;
+    box-shadow: inset 5px 0 0 0 rgba(0, 0, 0, .1), inset -5px 0 0 0 rgba(0, 0, 0, .1), inset -6px 0 0 0 rgba(255, 255, 255, .5), inset -4px 6px 11px -5px rgba(0, 0, 0, .2), inset 1px 1px 0 0 rgba(255, 255, 255, 1), -6px 4px 11px -7px rgba(0, 0, 0, .5);
+    background: rgb(253, 252, 251);
+    background: linear-gradient(to right, rgba(253, 252, 251, 1) 37%, rgba(229, 229, 229, 1) 61%);
+}
+
+.toggle>div>input[type=checkbox]:checked~div {
+    box-shadow: inset -5px 0 0 0 rgba(0, 0, 0, .1), inset 5px 0 0 0 rgba(0, 0, 0, .1), inset 6px 0 0 0 rgba(255, 255, 255, .5), inset -4px 6px 11px -5px rgba(0, 0, 0, .2), inset 1px 1px 0 0 rgba(255, 255, 255, 1), -6px 4px 11px -7px rgba(0, 0, 0, .5);
+    background: rgb(229, 229, 229);
+    background: linear-gradient(to right, rgba(229, 229, 229, 1) 39%, rgba(253, 252, 251, 1) 63%);
+}
+
+.toggle>div>input[type=checkbox]~div:before {
+    content: attr(data-unchecked);
+    display: block;
+    position: absolute;
+    border-radius: 10px;
+    top: 27px;
+    left: 30px;
+}
+
+.toggle>div>input[type=checkbox]~div:after {
+    content: attr(data-checked);
+    color: #119400;
+    text-shadow: 0 1px 0 #fff, 0px 0 7px #119400;
+    filter: dropshadow(color=#119400, offx=0, offy=0);
+    display: block;
+    position: absolute;
+    border-radius: 10px;
+    top: 27px;
+    left: 100px;
+}
+
+.toggle>div>input[type=checkbox]:checked~div:before {
+    color: #df0000;
+    text-shadow: 0 1px 0 #fff, 0px 0 7px #df0000;
+    filter: dropshadow(color=#df0000, offx=0, offy=0);
+}
+
+.toggle>div>input[type=checkbox]:checked~div:after {
+    color: #000;
+    text-shadow: none;
+    filter: dropshadow(none);
+}
+
+
+/* btn click css */
+
+.click-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 5em;
+    height: 5em;
+    /* background-color: #5da3ff; */
+    border-radius: 5px;
+}
+
+.button-click {
+    color: white;
+    width: 5.2em;
+    height: 3.1em;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    background-color: #325b90;
+    box-shadow: rgba(54, 94, 125, 0.377) 3px 3px 8px, #376199 1.5px 1.5px 2px 0px inset, #3f5671 -3.2px -3.2px 8px 0px inset;
+    cursor: pointer;
+    font-family: sans-serif;
+    transition: 0.1s ease-in-out;
+    z-index: 99;
+}
+
+.button-click:active {
+    box-shadow: rgba(94, 151, 195, 0.377) 0px 0px 0px, inset 0.5px 0.5px 4px #193355, #3f5671 -3.2px -3.2px 8px 0px inset;
+}
+
+.button-click:hover {
+    box-shadow: rgba(94, 151, 195, 0.377) 0px 0px 0px, inset 0.5px 0.5px 4px #193355, #4b71a2 -3.2px -3.2px 8px 0px inset;
+}
+
+.button-click:active {
+    scale: 0.95;
+}
+
+
+/* .content-home1 {
+    box-shadow: 0px -5px -5px #979797;
+} */
+
+.btn:hover {
+    @apply text-[#173f67];
+}
+
+.dark .btn:hover {
+    @apply text-[#c0e0ff];
+}
+
+.btn {
+    text-shadow: 0 1px 3px #1c3b59;
+}
+
+
+/* .btn {
+    text-shadow: 0 1px 1px #acd5ff;
+} */
+
+.cloud {
+    width: 150px;
+    height: 70px;
+    background: #ECEFF1;
+    box-shadow: 10px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 70px;
+}
+
+.dark .cloud {
+    width: 150px;
+    height: 70px;
+    background: #acd5ff;
+    box-shadow: 10px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 70px;
+}
+
+.cloud2 {
+    width: 120px;
+    height: 120px;
+    background: #F5B027;
+    box-shadow: 0px 0px 40px #F5B027;
+    border-radius: 50%;
+}
+
+.cloud::after,
+.cloud::before,
+.cloud2::after,
+.cloud2::before {
+    content: "";
+    position: relative;
+    display: inline-block;
+    background: inherit;
+    border-radius: inherit;
+}
+
+.cloud::after,
+.cloud2::after {
+    width: 50px;
+    height: 50px;
+    top: -30px;
+    left: -55px;
+}
+
+.cloud::before,
+.cloud2::before {
+    width: 70px;
+    height: 70px;
+    top: -20px;
+    left: 60px;
+}
+
+.cloud,
+.cloud2 {
+    animation: float 1.8s infinite alternate;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(15px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.dark .cloud2 {
+    width: 120px;
+    height: 120px;
+    /* Adjust height to maintain aspect ratio */
+    background: #F5F3CE;
+    box-shadow: 0px 0px 50px #F5F3CE;
+    border-radius: 50%;
+    /* Make it a circle */
+}
+
+.dark .cloud2::after,
+.dark .cloud2::before {
+    content: none;
+}
+
+.dark .cloud2::after,
+.dark .cloud2::before {
+    content: none;
+}
+
+.dark .moon1 {
+    width: 20px;
+    height: 20px;
+    background: #b4b29d;
+    border-radius: 50%;
+}
+
+.dark .moon2 {
+    width: 30px;
+    height: 30px;
+    background: #656253;
+    border-radius: 50%;
+}
+
+.dark .moon3 {
+    width: 40px;
+    height: 40px;
+    background: #9D9B84;
+    border-radius: 50%;
+}
+
+.dark .moon4 {
+    width: 27px;
+    height: 27px;
+    background: #9D9B84;
+    border-radius: 50%;
+}
+
+.floattext-con {
+    text-shadow: 2px 2px 40px #acd5ff;
+}
+
+.dark .floattext-con {
+    text-shadow: 2px 2px 40px #b4b29d;
+}
+
+.floattext {
+    animation: float 1.8s infinite alternate;
+}
+
+@keyframes floattext {
+    0% {
+        transform: translateY(15px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.floattext2 {
+    animation: float 1.7s infinite alternate;
+}
+
+@keyframes floattext2 {
+    0% {
+        transform: translateY(15.5px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.floattext3 {
+    animation: float 1.6s infinite alternate;
+}
+
+@keyframes floattext2 {
+    0% {
+        transform: translateY(15.8px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+
+/* not found */
+
+@keyframes floating {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+    45% {
+        transform: translate3d(0, -10%, 0);
+    }
+    55% {
+        transform: translate3d(0, -10%, 0);
+    }
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes floatingShadow {
+    0% {
+        transform: scale(1);
+    }
+    45% {
+        transform: scale(0.85);
+    }
+    55% {
+        transform: scale(0.85);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.container-nf {
+    font-family: 'Varela Round', sans-serif;
+    color: #646464;
+    position: relative;
+    height: 100vh;
+    text-align: center;
+    font-size: 16px;
+}
+
+.dark .container-nf {
+    color: #9b9b9b;
+}
+
+.container-nf h1 {
+    font-size: 32px;
+    margin-top: 32px;
+}
+
+.boo-wrapper {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    paddig-top: 64px;
+    paddig-bottom: 64px;
+}
+
+.boo {
+    width: 160px;
+    height: 184px;
+    background-color: #f7f7f7;
+    margin-left: auto;
+    margin-right: auto;
+    border: 3.3939393939px solid #9b9b9b;
+    border-bottom: 0;
+    overflow: hidden;
+    border-radius: 80px 80px 0 0;
+    box-shadow: -16px 0 0 2px rgba(234, 234, 234, .5) inset;
+    position: relative;
+    padding-bottom: 32px;
+    animation: floating 3s ease-in-out infinite;
+}
+
+.boo::after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: -18.8235294118px;
+    bottom: -8.3116883117px;
+    width: calc(100% + 32px);
+    height: 32px;
+    background-repeat: repeat-x;
+    background-size: 32px 32px;
+    background-position: left bottom;
+    background-image: linear-gradient(-45deg, #f7f7f7 16px, transparent 0), linear-gradient(45deg, #f7f7f7 16px, transparent 0), linear-gradient(-45deg, #9b9b9b 18.8235294118px, transparent 0), linear-gradient(45deg, #9b9b9b 18.8235294118px, transparent 0);
+}
+
+.boo .face {
+    width: 24px;
+    height: 3.2px;
+    border-radius: 5px;
+    background-color: #444444;
+    position: absolute;
+    left: 50%;
+    bottom: 56px;
+    transform: translateX(-50%);
+}
+
+.dark .boo .face {
+    background-color: #9b9b9b;
+}
+
+.boo .face::before,
+.boo .face::after {
+    content: '';
+    display: block;
+    width: 6px;
+    height: 6px;
+    background-color: #9b9b9b;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 40px;
+}
+
+.boo .face::before {
+    left: -24px;
+}
+
+.boo .face::after {
+    right: -24px;
+}
+
+.shadow-nf {
+    width: 128px;
+    height: 16px;
+    background-color: rgba(234, 234, 234, .75);
+    margin-top: 40px;
+    margin-right: auto;
+    margin-left: auto;
+    border-radius: 50%;
+    animation: floatingShadow 3s ease-in-out infinite;
+}
+
+.progress-con {
+    animation: progress 0.8s ease-in-out forwards;
+}
+
+@keyframes progress {
+    0% {
+        width: 0;
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
